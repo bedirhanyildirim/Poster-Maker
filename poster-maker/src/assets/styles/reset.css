@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap');
+
+*, *:before, *:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box !important;
+    -ms-box-sizing: border-box !important;
+    -moz-box-sizing: border-box !important;
+    -webkit-box-sizing: border-box !important;
+}
+
+/* Bedirhan YILDIRIM reset.css */
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    overflow: auto;
+    background-color: #ffffff;
+    transition: all 0.5s ease 0s;
+    font: 16px 'Roboto', '.AppleSystemUIFont';
+}
+select, input, textarea {
+    outline: none;
+    box-shadow: none;
+}
+img {
+    border: none;
+}
+a {
+    text-decoration: none;
+}
+table, tr, td, ul, li, h1, h2, h3, h4, h5, h6, p, form, input, textarea {
+    margin: 0;
+    padding: 0;
+    border: none;
+    list-style-type: none;
+}
+:focus {
+    outline: none;
+}
+html {
+    scroll-behavior: smooth;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    margin: 0;
+    -webkit-appearance: none;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
