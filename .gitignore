@@ -1,9 +1,11 @@
 .DS_Store
-node_modules
+poster-maker/node_modules
+package-lock.json
 /dist
-
+poster-maker/dist
 
 # local env files
+.env
 .env.local
 .env.*.local
 
