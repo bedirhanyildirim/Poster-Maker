@@ -3,12 +3,14 @@
   <div id="content">
     <header-theme></header-theme>
     <div id="form">
-      <poster-form></poster-form>
+      <poster-form @title="updateTitle" @subject="updateSubject" @date="updateDate"
+      @time="updateTime" @location="updateLocation"></poster-form>
     </div>
     <footer-theme></footer-theme>
   </div>
   <div id="preview">
-    preview
+    <poster-preview :title="title" :subject="subject" :date="getDateFormated" :time="time" :location="location">
+    </poster-preview>
   </div>
 </div>
 </template>
@@ -17,9 +19,47 @@
 import HeaderTheme from '../themes/header.theme'
 import FooterTheme from '../themes/footer.theme'
 import PosterForm from '../components/form.poster'
+import PosterPreview from '../components/preview.poster'
 export default {
   name: 'home.pages',
-  components: { HeaderTheme, FooterTheme, PosterForm }
+  components: { HeaderTheme, FooterTheme, PosterForm, PosterPreview },
+  data: function () {
+    return {
+      title: '',
+      subject: '',
+      date: '',
+      time: '',
+      location: ''
+    }
+  },
+  methods: {
+    updateTitle: function (val) {
+      this.title = val
+    },
+    updateSubject: function (val) {
+      this.subject = val
+    },
+    updateDate: function (val) {
+      this.date = val
+    },
+    updateTime: function (val) {
+      this.time = val
+    },
+    updateLocation: function (val) {
+      this.location = val
+    }
+  },
+  computed: {
+    getDateFormated: function () {
+      if (this.date.length > 0) {
+        let d = this.date.split('-')[2]
+        let m = this.date.split('-')[1]
+        let y = this.date.split('-')[0]
+        return d+'.'+m+'.'+y
+      }
+      return ''
+    }
+  }
 }
 </script>
 

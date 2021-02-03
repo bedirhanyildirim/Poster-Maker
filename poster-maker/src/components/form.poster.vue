@@ -19,6 +19,10 @@
     <label for="location" class="label">Location</label>
     <input type="text" id="location" v-model="location" class="input-text">
   </div>
+  <div class="row">
+    <span class="platforms">Instagram Story, Instagram Post, Youtuber Cover</span>
+    <a class="download-button">Download</a>
+  </div>
 </div>
 </template>
 
@@ -30,9 +34,33 @@ export default {
       title: '',
       subject: '',
       location: '',
-      date: new Date().toISOString().slice(0,10),
-      time: new Date().toTimeString().slice(0,5)
+      date: '',
+      time: ''
     }
+  },
+  created() {
+    this.title = 'Title'
+    this.subject = 'Subject'
+    this.date = new Date().toISOString().slice(0,10)
+    this.time = new Date().toTimeString().slice(0,5)
+    this.location = 'Zoom'
+  },
+  watch: {
+    title: function (val) {
+      this.$emit('title', val)
+    },
+    subject: function (val) {
+      this.$emit('subject', val)
+    },
+    location: function (val) {
+      this.$emit('location', val)
+    },
+    date: function (val) {
+      this.$emit('date', val)
+    },
+    time: function (val) {
+      this.$emit('time', val)
+    },
   }
 }
 </script>
@@ -148,6 +176,46 @@ export default {
       &:focus {
         background-color: #ffffff;
         border-color: rgba(48,48,48,0.4);
+        box-shadow: 0 0 0 4px rgba(48, 48, 48, 0.1);
+      }
+    }
+    .platforms {
+      color: #303030;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 300;
+      white-space: nowrap;
+      padding-bottom: 4px;
+      margin: 16px 0 0 8px;
+      border-bottom: 1px solid rgba(48, 48, 48, 0.5);
+
+      &:after {
+        content: ' ..';
+      }
+    }
+    .download-button {
+      width: 100%;
+      height: 40px;
+      outline: none;
+      color: #000000;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 16px;
+      appearance: none;
+      font-weight: 500;
+      line-height: 24px;
+      padding: 10px 16px;
+      text-align: center;
+      border-radius: 8px;
+      display: inline-block;
+      box-sizing: border-box;
+      background-color: #ffffff;
+      transition: all 200ms ease;
+      border: 1px solid transparent;
+
+      &:hover {
+        background-color: #ffffff;
+        border-color: rgba(0,0,0,0.1);
         box-shadow: 0 0 0 4px rgba(48, 48, 48, 0.1);
       }
     }
