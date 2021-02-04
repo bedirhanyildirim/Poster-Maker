@@ -21,7 +21,7 @@
   </div>
   <div class="row">
     <span class="platforms">Instagram Story, Instagram Post, Youtuber Cover</span>
-    <a class="download-button">Download</a>
+    <a class="download-button" @click="download">Download</a>
   </div>
 </div>
 </template>
@@ -60,7 +60,12 @@ export default {
     },
     time: function (val) {
       this.$emit('time', val)
-    },
+    }
+  },
+  methods: {
+    download: function () {
+      alert('Coming Soon!')
+    }
   }
 }
 </script>
@@ -195,28 +200,25 @@ export default {
     }
     .download-button {
       width: 100%;
-      height: 40px;
       outline: none;
-      color: #000000;
+      color: #ffffff;
       cursor: pointer;
       font-size: 14px;
       margin-top: 16px;
       appearance: none;
       font-weight: 500;
       line-height: 24px;
-      padding: 10px 16px;
+      padding: 8px 16px;
       text-align: center;
       border-radius: 8px;
       display: inline-block;
       box-sizing: border-box;
-      background-color: #ffffff;
+      background-color: #303030;
       transition: all 200ms ease;
-      border: 1px solid transparent;
+      font-family: '.AppleSystemUIFont';
 
       &:hover {
-        background-color: #ffffff;
-        border-color: rgba(0,0,0,0.1);
-        box-shadow: 0 0 0 4px rgba(48, 48, 48, 0.1);
+        background-color: #000000;
       }
     }
   }
