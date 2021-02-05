@@ -1,19 +1,10 @@
-# poster-maker
+# Poster Maker
 
-## Project setup
-```
-yarn install
-```
+The Poster Maker project idea developed & improved by @furkansarihan and @bedirhanyildirim
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+The main idea has been always creating very simple, very basic and well aligned posters. User will never have to design again. The target is bring to the end bad designed posters.
 
-### Compiles and minifies for production
-```
-yarn build
-```
+For more keep follow.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Live demo
+For preview demo [click](https://poster-maker-914c5.web.app/) here.
