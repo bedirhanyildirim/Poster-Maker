@@ -85,8 +85,9 @@ export default {
       return blob
     },
     addBlob: function (blob) {
-      blob.style.top = Math.floor(Math.random() * (500 - blob.style.height.slice(0,-2))) + 'px'
-      blob.style.left = Math.floor(Math.random() * (500 - blob.style.width.slice(0,-2))) + 'px'
+      let wh = blob.style.height.slice(0,-2)
+      blob.style.top = Math.floor(Math.random() * (500 - wh + (wh/2))) + 'px'
+      blob.style.left = Math.floor(Math.random() * (500 - wh + (wh/2))) + 'px'
       this.blobArray.push(blob)
     },
     randomBlobs: function (count) {
@@ -179,6 +180,7 @@ export default {
         right: 0;
         bottom: 0;
         z-index: 1;
+        overflow: hidden;
         position: absolute;
 
         .blob {
