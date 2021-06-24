@@ -19,14 +19,11 @@
     <label for="location" class="label">Location</label>
     <input type="text" id="location" v-model="location" class="input-text">
   </div>
-  <div class="row">
-    <span class="platforms">Instagram Story, Instagram Post, Youtuber Cover</span>
-    <a class="download-button" @click="download">Download</a>
-  </div>
 </div>
 </template>
 
 <script>
+import c2h from '../assets/scripts/html2canvas'
 export default {
   name: 'form.poster',
   data: function () {
@@ -63,8 +60,28 @@ export default {
     }
   },
   methods: {
-    download: function () {
-      alert('Coming Soon!')
+    download: function (e) {
+      c2h(document.getElementById('preview-div'), {
+        scale: 2,
+        width: 500,
+        height: 500,
+        useCORS: true,
+        logging: false,
+        allowTaint: true,
+        letterRendering: true,
+      }).then(canvas => {
+        this.ctx = canvas.getContext('2d')
+        this.ctx.imageSmoothingEnabled = true
+        this.ctx.imageSmoothingQuality = 'high'
+        this.ctx.mozImageSmoothingEnabled = true
+        this.ctx.webkitImageSmoothingEnabled = true
+        this.img = canvas.toDataURL('image/png')
+        //console.log(img)
+        document.body.appendChild(canvas)
+        e.target.setAttribute('download', 'sample.png')
+        e.target.setAttribute('href', this.img.replace('image/png', 'image/octet-stream'))
+        e.target.click()
+      })
     }
   }
 }
@@ -89,10 +106,9 @@ export default {
     .label {
       color: #303030;
       display: block;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 500;
       margin: 16px 0 8px;
-      font-family: '.AppleSystemUIFont';
     }
     .double-input {
       width: 100%;
@@ -127,6 +143,9 @@ export default {
         box-shadow: 0 0 0 4px rgba(48, 48, 48, 0.1);
       }
     }
+    #title {
+      text-transform: uppercase;
+    }
     .input-date {
       width: 100%;
       height: 40px;
@@ -144,7 +163,6 @@ export default {
       background-color: #ffffff;
       transition: all 200ms ease;
       border: 1px solid transparent;
-      font-family: '.AppleSystemUIFont';
       &:hover {
         background-color: #ffffff;
         border-color: rgba(0,0,0,0.1);
@@ -172,7 +190,6 @@ export default {
       background-color: #ffffff;
       transition: all 200ms ease;
       border: 1px solid transparent;
-      font-family: '.AppleSystemUIFont';
       &:hover {
         background-color: #ffffff;
         border-color: rgba(0,0,0,0.1);
@@ -184,24 +201,10 @@ export default {
         box-shadow: 0 0 0 4px rgba(48, 48, 48, 0.1);
       }
     }
-    .platforms {
-      color: #303030;
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: 300;
-      white-space: nowrap;
-      padding-bottom: 4px;
-      margin: 16px 0 0 8px;
-      border-bottom: 1px solid rgba(48, 48, 48, 0.5);
-
-      &:after {
-        content: ' ..';
-      }
-    }
     .download-button {
       width: 100%;
       outline: none;
-      color: #ffffff;
+      color: #505050;
       cursor: pointer;
       font-size: 14px;
       margin-top: 16px;
@@ -213,12 +216,11 @@ export default {
       border-radius: 8px;
       display: inline-block;
       box-sizing: border-box;
-      background-color: #303030;
+      background-color: #ffffff;
       transition: all 200ms ease;
-      font-family: '.AppleSystemUIFont';
 
       &:hover {
-        background-color: #000000;
+        color: #000000;
       }
     }
   }

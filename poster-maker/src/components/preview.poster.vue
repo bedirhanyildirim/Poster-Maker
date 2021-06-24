@@ -1,8 +1,7 @@
 <template>
 <div id="preview-poster">
   <div id="preview-container">
-    <!--canvas id="preview-canvas" height="500" width="500"></canvas-->
-    <div id="preview-div">
+    <div id="preview-div" :class="this.getTextAlignment">
       <div class="blobs">
         <div v-for="b of this.blobArray" v-html="b.outerHTML"></div>
       </div>
@@ -23,13 +22,38 @@
       </div>
     </div>
     <div class="row">
-      <a @click="randomBlobs(blobCount)" class="random-button">Random</a>
+      <a class="icon-button ratio-button">
+        <span>1:1</span>
+      </a>
+      <a @click="changeFontFamily" class="icon-button font-button" id="font-button">
+        <span>Aa</span>
+      </a>
+      <a @click="randomBlobs(blobCount)" class="icon-button random-button">
+        <span class="material-icons-outlined">
+          casino
+        </span>
+      </a>
+      <a @click="changeAlignment" class="icon-button alignment-button">
+        <span class="material-icons-outlined">
+          {{ this.alignments[this.alignment] }}
+        </span>
+      </a>
+      <a class="icon-button color-button">
+        <div class="color">
+        </div>
+      </a>
+      <a @click.prevent="download" class="icon-button download-button">
+        <span class="material-icons-sharp">
+          download
+        </span>
+      </a>
     </div>
   </div>
 </div>
 </template>
 
 <script>
+import c2h from '../assets/scripts/html2canvas'
 export default {
   name: 'preview.poster',
   props: {
@@ -57,15 +81,46 @@ export default {
   data: function () {
     return {
       blobCount: 3,
-      blobArray: []
+      blobArray: [],
+      previewArea: null,
+      alignment: 0,
+      alignments: ['align_horizontal_left', 'align_horizontal_center','align_horizontal_right'],
+      fontFamily: 0,
+      fontFamilies: ['Roboto', 'Oswald', 'Open Sans', 'Newsreader', 'Truculenta'],
+      ctx: null,
+      img: null
     }
   },
   mounted() {
     this.randomBlobs(this.blobCount)
+    this.previewArea = document.getElementById('preview-div')
+  },
+  computed: {
+    titleStyle: function () {
+      return {
+        zIndex: 2,
+        width: '100%',
+        fontSize: '48px',
+        fontWeight: 700,
+        fontVariant: 'normal',
+        padding: '0 32px 24px 32px'
+      }
+    },
+    getTextAlignment: function () {
+      if (this.alignment == 0) {
+        return 'text-left'
+      }
+      if (this.alignment == 1) {
+        return 'text-center'
+      }
+      if (this.alignment == 2) {
+        return 'text-right'
+      }
+    }
   },
   methods: {
     createBlob: function () {
-      let wh = Math.floor(Math.random() * 200 + 200)
+      let wh = Math.floor(Math.random() * 300 + 200)
       let opacity = ((Math.random() * 8 + 7) / 100).toFixed(2)
       let percentage1 = Math.floor(Math.random() * 60 + 20)
       let percentage3 = Math.floor(Math.random() * 60 + 20)
@@ -86,8 +141,8 @@ export default {
     },
     addBlob: function (blob) {
       let wh = blob.style.height.slice(0,-2)
-      blob.style.top = Math.floor(Math.random() * (500 - wh + (wh/2))) + 'px'
-      blob.style.left = Math.floor(Math.random() * (500 - wh + (wh/2))) + 'px'
+      blob.style.top = Math.floor(Math.random() * 500) - (wh/2) + 'px'
+      blob.style.left = Math.floor(Math.random() * 500) - (wh/2) + 'px'
       this.blobArray.push(blob)
     },
     randomBlobs: function (count) {
@@ -100,12 +155,69 @@ export default {
     },
     clearBlobs: function () {
       this.blobArray = []
+    },
+    changeAlignment: function () {
+      if (this.alignment < 2) {
+        this.alignment++
+      } else {
+        this.alignment = 0
+      }
+    },
+    changeFontFamily: function () {
+      if (this.fontFamily < this.fontFamilies.length-1) {
+        this.fontFamily++
+      } else {
+        this.fontFamily = 0
+      }
+      this.setFontFamily()
+    },
+    setFontFamily: function () {
+      document.getElementById('preview-div').style.fontFamily = this.fontFamilies[this.fontFamily]
+      document.getElementById('font-button').style.fontFamily = this.fontFamilies[this.fontFamily]
+    },
+    download: function () {
+      c2h(document.getElementById('preview-div'), {
+        scale: 2,
+        width: 500,
+        height: 500,
+        useCORS: true,
+        logging: false,
+        allowTaint: true,
+        letterRendering: true,
+      }).then(canvas => {
+        this.ctx = canvas.getContext('2d')
+        this.ctx.imageSmoothingEnabled = true
+        this.ctx.imageSmoothingQuality = 'high'
+        this.ctx.mozImageSmoothingEnabled = true
+        this.ctx.webkitImageSmoothingEnabled = true
+        this.img = canvas.toDataURL('image/png')
+
+        const link = document.createElement('a')
+        link.href = this.img.replace('image/png', 'image/octet-stream')
+        link.download = this.title + '.png'
+        link.click()
+        URL.revokeObjectURL(link.href)
+      })
     }
   }
 }
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Newsreader:300,400,500,700,800&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Truculenta:300,400,500,700,900&display=swap');
+
+.text-right {
+  text-align: right!important;
+}
+.text-left {
+  text-align: left!important;
+}
+.text-center {
+  text-align: center!important;
+}
 #preview-poster {
   width: 100%;
   height: 100%;
@@ -117,13 +229,14 @@ export default {
   #preview-container {
     display: flex;
     align-items: center;
-    flex-direction: column;
     justify-content: center;
+    flex-direction: row-reverse;
 
     #previewCanvas {
       width: 500px;
       height: 500px;
       position: relative;
+      font-variant: normal;
       box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.18);
       -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.18);
       -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.18);
@@ -133,6 +246,7 @@ export default {
       height: 500px;
       display: flex;
       position: relative;
+      font-variant: normal;
       flex-direction: column;
       justify-content: center;
       box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.18);
@@ -143,36 +257,43 @@ export default {
         z-index: 2;
         width: 100%;
         font-size: 48px;
-        font-weight: 700;
-        padding: 0 16px 24px 32px;
+        font-weight: 800;
+        overflow: hidden;
+        white-space: normal;
+        font-variant: normal;
+        padding: 0 32px 24px 32px;
+        text-transform: uppercase;
       }
       .subject {
         z-index: 2;
         width: 100%;
         font-size: 24px;
-        font-weight: 500;
-        padding: 0 16px 24px 32px;
+        font-weight: 600;
+        font-variant: normal;
+        padding: 0 32px 24px 32px;
       }
       .date {
         z-index: 2;
         width: 100%;
         font-size: 20px;
-        padding: 8px 32px;
         font-weight: 300;
+        padding: 8px 32px;
+        font-variant: normal;
       }
       .time {
         z-index: 2;
         width: 100%;
         font-size: 20px;
-        padding: 0 16px 40px 32px;
         font-weight: 300;
+        font-variant: normal;
+        padding: 0 32px 40px 32px;
       }
       .location {
         z-index: 2;
         width: 100%;
         font-size: 20px;
-        text-align: left;
-        padding: 0 16px 16px 32px;
+        font-variant: normal;
+        padding: 0 32px 16px 32px;
       }
       .blobs {
         top: 0;
@@ -192,32 +313,94 @@ export default {
       }
     }
     .row {
-      min-width: 100px;
-      margin-top: 16px;
+      height: 100%;
+      display: flex;
+      user-select: none;
+      margin-right: 16px;
+      flex-direction: column;
+      justify-content: flex-end;
 
-      .random-button {
-        width: 100%;
+      .icon-button {
+        padding: 8px;
         outline: none;
+        display: flex;
         color: #ffffff;
         cursor: pointer;
-        font-size: 14px;
-        appearance: none;
-        font-weight: 500;
-        line-height: 24px;
-        padding: 8px 16px;
-        text-align: center;
-        border-radius: 8px;
-        display: inline-block;
+        overflow: hidden;
+        position: relative;
+        margin-bottom: 8px;
+        border-radius: 50%;
+        align-items: center;
         box-sizing: border-box;
-        background-color: #303030;
+        justify-content: center;
         transition: all 200ms ease;
-        font-family: '.AppleSystemUIFont';
 
         &:hover {
-          background-color: #000000;
+          background-color: #efefef;
+        }
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        span {
+          color: #303030;
+        }
+
+        &.color-button {
+
+          .color {
+            width: 24px;
+            height: 24px;
+            display: block;
+            border-radius: 50%;
+            border: 2px solid #000000;
+            background: linear-gradient(135deg, rgba(255,255,255,1) 25%, rgba(48,48,48,0.45) 75%);
+          }
+        }
+
+        &.random-button {
+          &:hover {
+            span {
+              animation: wobble-hor-bottom 1s cubic-bezier(0.645, 0.045, 0.355, 1.000) both;
+            }
+          }
+        }
+
+        &.ratio-button, &.font-button {
+          span {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            font-weight: 600;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+          }
         }
       }
     }
   }
 }
+@keyframes wobble-hor-bottom {
+   0%,
+   100% {
+     transform: translateX(0%);
+     transform-origin: 50% 50%;
+   }
+   15% {
+     transform: translateX(-3px) rotate(-6deg);
+   }
+   30% {
+     transform: translateX(1.5px) rotate(6deg);
+   }
+   45% {
+     transform: translateX(-1.5px) rotate(-3.6deg);
+   }
+   60% {
+     transform: translateX(0.9px) rotate(2.4deg);
+   }
+   75% {
+     transform: translateX(-0.6px) rotate(-1.2deg);
+   }
+ }
 </style>
