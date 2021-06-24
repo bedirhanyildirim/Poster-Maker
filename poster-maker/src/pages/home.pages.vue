@@ -78,7 +78,7 @@ export default {
 
     #form {
       padding: 48px;
-      height: calc(100vh - 84px);
+      height: calc(100vh - 88px);
     }
   }
   #preview {

@@ -9,7 +9,7 @@
     -webkit-box-sizing: border-box !important;
 }
 
-/* Bedirhan YILDIRIM reset.css */
+/* Bedirhan Yildirim reset.css */
 body {
     width: 100%;
     height: 100%;
@@ -17,7 +17,7 @@ body {
     overflow: auto;
     background-color: #ffffff;
     transition: all 0.5s ease 0s;
-    font: 16px 'Roboto', '.AppleSystemUIFont';
+    font: 16px 'Roboto';
 }
 select, input, textarea {
     outline: none;
