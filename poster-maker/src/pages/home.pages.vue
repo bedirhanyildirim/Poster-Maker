@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import HeaderTheme from '../themes/header.theme'
-import FooterTheme from '../themes/footer.theme'
+import HeaderTheme from '../components/PosterMaker/Theme/Header'
+import FooterTheme from '../components/PosterMaker/Theme/Footer'
 import PosterForm from '../components/form.poster'
 import PosterPreview from '../components/preview.poster'
 export default {
