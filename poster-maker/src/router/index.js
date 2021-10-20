@@ -21,6 +21,14 @@ const routes = [
     meta: {
       title: 'Poster Maker'
     }
+  },
+  {
+    path: '*',
+    name: '404',
+    component: () => import('@/pages/404'),
+    meta: {
+      title: 'Not found'
+    }
   }
 ]
 
