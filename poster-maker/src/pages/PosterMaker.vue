@@ -1,6 +1,7 @@
 <template>
   <div>
     <PosterMakerLayout>
+      Content
     </PosterMakerLayout>
   </div>
 </template>
