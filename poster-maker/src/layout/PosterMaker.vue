@@ -2,18 +2,15 @@
   <div>
     <Header></Header>
     <slot></slot>
-    <Footer></Footer>
   </div>
 </template>
 
 <script>
 import Header from "@/components/PosterMaker/Theme/Header"
-import Footer from "@/components/PosterMaker/Theme/Footer"
 
 export default {
   components: {
-    Header,
-    Footer
+    Header
   }
 }
 </script>

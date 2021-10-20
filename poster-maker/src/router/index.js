@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../pages/home.pages'
-import PosterMaker from "@/pages/PosterMaker"
 
 Vue.use(VueRouter)
 
@@ -9,7 +7,7 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home,
+    component: () => import('@/pages/Homepage'),
     meta: {
       title: 'Welcome'
     }
@@ -17,7 +15,7 @@ const routes = [
   {
     path: '/poster-maker',
     name: 'PosterMaker',
-    component: PosterMaker,
+    component: () => import('@/pages/PosterMaker'),
     meta: {
       title: 'Poster Maker'
     }

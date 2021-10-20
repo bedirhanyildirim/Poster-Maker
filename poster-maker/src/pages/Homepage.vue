@@ -21,7 +21,6 @@ import FooterTheme from '../components/PosterMaker/Theme/Footer'
 import PosterForm from '../components/form.poster'
 import PosterPreview from '../components/preview.poster'
 export default {
-  name: 'home.pages',
   components: { HeaderTheme, FooterTheme, PosterForm, PosterPreview },
   data: function () {
     return {
