@@ -6,6 +6,7 @@
       <div id="artboard">
         <slot></slot>
       </div>
+      <Artboards></Artboards>
     </div>
   </div>
 </template>
@@ -13,11 +14,13 @@
 <script>
 import Header from '@/components/PosterMaker/Theme/Header'
 import Sidebar from '@/components/PosterMaker/Theme/Sidebar'
+import Artboards from '@/components/PosterMaker/Theme/Artboards'
 
 export default {
   components: {
     Header,
-    Sidebar
+    Sidebar,
+    Artboards
   }
 }
 </script>
