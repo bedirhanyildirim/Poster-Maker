@@ -1,22 +1,37 @@
 const state = {
+    title: '',
+    subject: '',
+    date: '',
+    time: '',
+    location: '',
     colors: [],
-    selectedColor: {},
+    selectedColor: undefined,
     layouts: [],
-    selectedLayout: {},
+    selectedLayout: undefined,
     fonts: [],
-    selectedFont: {}
+    selectedFont: undefined
 }
 
 const getters = {
-    colors: (state) => state.colors,
-    selectedColor: (state) => state.selectedColor,
-    layouts: (state) => state.layouts,
-    selectedLayout: (state) => state.selectedLayout,
-    fonts: (state) => state.fonts,
-    selectedFont: (state) => state.selectedFont
+    // if you need something formatted such as from Object to Array
 }
 
 const mutations = {
+    setTitle(state, title) {
+        state.title = title
+    },
+    setSubject(state, subject) {
+        state.subject = subject
+    },
+    setDate(state, date) {
+        state.date = date
+    },
+    setTime(state, time) {
+        state.time = time
+    },
+    setLocation(state, location) {
+        state.location = location
+    },
     setColors(state, colorSets) {
         state.colors = colorSets
     },
@@ -38,7 +53,7 @@ const mutations = {
 }
 
 const actions = {
-
+    // to use axios to make backend calls
 }
 
 export default {
