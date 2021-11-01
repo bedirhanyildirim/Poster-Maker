@@ -101,7 +101,7 @@ export default {
       this.minute = ''
     },
     setTime() {
-      if (!!this.hour && !!this.minute) {
+      if (this.hour !== '' && this.minute !== '') {
         let newHour = this.hour < 10 ? '0' + this.hour : this.hour
         let newMinute = this.minute < 10 ? '0' + this.minute : this.minute
         this.time = newHour + ':' + newMinute
