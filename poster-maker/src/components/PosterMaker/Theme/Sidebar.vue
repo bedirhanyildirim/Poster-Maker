@@ -1,6 +1,6 @@
 <template>
 <div id="sidebar">
-  <div class="navbar-menu">
+  <div class="menu">
     <div class="item">
       <a class="icon-button active">
         <span class="material-icons">
@@ -37,11 +37,11 @@
       </a>
     </div>
   </div>
-  <div class="navbar-content">
+  <div class="content">
     <div class="title">
       <h4>TEXT</h4>
     </div>
-    <div class="content">
+    <div class="inputs">
       <div class="row">
         <CustomInputText
           :clearable="true"
@@ -119,7 +119,7 @@ export default {
   justify-content: center;
   background-color: #F7F7F7;
 
-  .navbar-menu {
+  .menu {
     width: 62px;
     display: flex;
     flex-direction: column;
@@ -159,7 +159,7 @@ export default {
       }
     }
   }
-  .navbar-content {
+  .content {
     width: 302px;
     display: flex;
     flex-direction: column;
@@ -180,7 +180,7 @@ export default {
         font-weight: normal;
       }
     }
-    .content {
+    .inputs {
       width: 100%;
       display: flex;
       flex-direction: column;

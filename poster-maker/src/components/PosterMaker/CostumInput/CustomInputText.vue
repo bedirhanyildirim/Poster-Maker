@@ -1,7 +1,7 @@
 <template>
 <div class="custom-text-input">
   <div class="icon" v-if="iconName">
-    <span class="material-icons" style="font-size: 16px;">
+    <span class="material-icons">
       {{ iconName }}
     </span>
   </div>
@@ -13,7 +13,7 @@
     @input="onInput"
     @change="onChange"/>
   <div class="clear" v-if="clearable && (value !== '')">
-    <span class="material-icons" style="font-size: 16px" @click="clearInput">
+    <span class="material-icons" @click="clearInput">
       close
     </span>
   </div>
@@ -56,6 +56,7 @@ export default {
     },
     clearInput() {
       this.value = ''
+      this.$emit('input', this.value)
     }
   }
 }
@@ -85,6 +86,7 @@ export default {
     justify-content: center;
 
     .material-icons {
+      font-size: 16px;
       transition: all 200ms ease;
     }
   }

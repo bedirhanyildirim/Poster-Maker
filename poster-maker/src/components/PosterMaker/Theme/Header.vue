@@ -138,6 +138,7 @@ export default {
       a {
         color: #9F9F9F;
         padding: 0 6px;
+        font-size: 16px;
         transition: 300ms all ease-in-out;
 
         &.router-link-active {
