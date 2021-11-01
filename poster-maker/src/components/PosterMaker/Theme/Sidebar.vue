@@ -47,7 +47,7 @@
           :clearable="true"
           icon-name="title"
           placeholder="title"
-          v-model="title">
+          v-model="selectedTitle">
         </CustomInputText>
       </div>
       <div class="row">
@@ -55,21 +55,21 @@
           :clearable="true"
           icon-name="text_fields"
           placeholder="subject"
-          v-model="subject">
+          v-model="selectedSubject">
         </CustomInputText>
       </div>
       <div class="row">
         <CustomInputDate
           :clearable="true"
           icon-name="event"
-          v-model="date"
+          v-model="selectedDate"
         ></CustomInputDate>
       </div>
       <div class="row">
         <CustomInputTime
           :clearable="true"
           icon-name="schedule"
-          v-model="time"
+          v-model="selectedTime"
         ></CustomInputTime>
       </div>
       <div class="row">
@@ -77,7 +77,7 @@
           :clearable="true"
           icon-name="place"
           placeholder="location"
-          v-model="location">
+          v-model="selectedLocation">
         </CustomInputText>
       </div>
     </div>
@@ -86,6 +86,7 @@
 </template>
 
 <script>
+import { mapState, mapMutations} from 'vuex'
 import CustomInputText from '@/components/PosterMaker/CostumInput/CustomInputText'
 import CustomInputDate from '@/components/PosterMaker/CostumInput/CustomInputDate'
 import CustomInputTime from '@/components/PosterMaker/CostumInput/CustomInputTime'
@@ -96,17 +97,69 @@ export default {
     CustomInputDate,
     CustomInputTime
   },
-  data: function () {
-    return {
-      title: '',
-      subject: '',
-      date: '',
-      time: '',
-      location: ''
+  created() {
+    //this.time = new Date().toTimeString().slice(0,5)
+  },
+  computed: {
+    ...mapState("posterMaker", [
+        "title",
+        "subject",
+        "date",
+        "time",
+        "location"
+    ]),
+    selectedTitle: {
+      get() {
+        return this.title
+      },
+      set(value) {
+        return this.setTitle(value)
+      }
+    },
+    selectedSubject: {
+      get() {
+        return this.subject
+      },
+      set(value) {
+        return this.setSubject(value)
+      }
+    },
+    selectedDate: {
+      get() {
+        return this.date
+      },
+      set(value) {
+        return this.setDate(value)
+      }
+    },
+    selectedTime: {
+      get() {
+        return this.time
+      },
+      set(value) {
+        return this.setTime(value)
+      }
+    },
+    selectedLocation: {
+      get() {
+        return this.location
+      },
+      set(value) {
+        return this.setLocation(value)
+      }
     }
   },
-  created() {
-    this.time = new Date().toTimeString().slice(0,5)
+  methods: {
+    ...mapMutations("posterMaker", [
+        "setTitle",
+        "setSubject",
+        "setDate",
+        "setTime",
+        "setLocation",
+        "selectColor",
+        "selectLayout",
+        "selectFont"
+    ])
   }
 }
 </script>
