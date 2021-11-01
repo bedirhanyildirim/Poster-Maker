@@ -42,20 +42,43 @@
       <h4>TEXT</h4>
     </div>
     <div class="content">
-      <div class="row active">
-        <input type="text" v-model="title">
+      <div class="row">
+        <CustomInputText
+          :clearable="true"
+          icon-name="title"
+          placeholder="title"
+          v-model="title">
+        </CustomInputText>
       </div>
       <div class="row">
-        <input type="text" v-model="subject">
+        <CustomInputText
+          :clearable="true"
+          icon-name="text_fields"
+          placeholder="subject"
+          v-model="subject">
+        </CustomInputText>
       </div>
       <div class="row">
-        <input type="date" v-model="date">
+        <CustomInputDate
+          :clearable="true"
+          icon-name="event"
+          v-model="date"
+        ></CustomInputDate>
       </div>
       <div class="row">
-        <input type="time" v-model="time">
+        <CustomInputTime
+          :clearable="true"
+          icon-name="schedule"
+          v-model="time"
+        ></CustomInputTime>
       </div>
       <div class="row">
-        <input type="text" v-model="location">
+        <CustomInputText
+          :clearable="true"
+          icon-name="place"
+          placeholder="location"
+          v-model="location">
+        </CustomInputText>
       </div>
     </div>
   </div>
@@ -63,7 +86,16 @@
 </template>
 
 <script>
+import CustomInputText from '@/components/PosterMaker/CostumInput/CustomInputText'
+import CustomInputDate from '@/components/PosterMaker/CostumInput/CustomInputDate'
+import CustomInputTime from '@/components/PosterMaker/CostumInput/CustomInputTime'
+
 export default {
+  components: {
+    CustomInputText,
+    CustomInputDate,
+    CustomInputTime
+  },
   data: function () {
     return {
       title: '',
@@ -74,11 +106,7 @@ export default {
     }
   },
   created() {
-    this.title = 'Title'
-    this.subject = 'Subject'
-    this.date = new Date().toISOString().slice(0,10)
     this.time = new Date().toTimeString().slice(0,5)
-    this.location = 'Location'
   }
 }
 </script>
@@ -158,6 +186,7 @@ export default {
       flex-direction: column;
 
       .row {
+        width: 100%;
         height: 60px;
         padding: 16px;
         display: flex;
