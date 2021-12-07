@@ -3,9 +3,7 @@
     <Header></Header>
     <div id="content">
       <Sidebar></Sidebar>
-      <div id="artboard">
-        <slot></slot>
-      </div>
+      <Preview id="preview"></Preview>
       <Artboards></Artboards>
     </div>
   </div>
@@ -14,12 +12,14 @@
 <script>
 import Header from '@/components/PosterMaker/Theme/Header'
 import Sidebar from '@/components/PosterMaker/Theme/Sidebar'
+import Preview from '@/components/PosterMaker/Theme/Preview'
 import Artboards from '@/components/PosterMaker/Theme/Artboards'
 
 export default {
   components: {
     Header,
     Sidebar,
+    Preview,
     Artboards
   }
 }
@@ -45,6 +45,7 @@ html {
 
 #poster-maker-layout {
   background-color: #ffffff;
+  height: 100vh;
 
   #content {
     display: flex;
@@ -52,7 +53,7 @@ html {
     flex-direction: row;
     height: calc(100vh - 60px);
 
-    #artboard {
+    #preview {
       flex-grow: 1;
     }
   }
