@@ -86,7 +86,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations} from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 import CustomInputText from '@/components/PosterMaker/CostumInput/CustomInputText'
 import CustomInputDate from '@/components/PosterMaker/CostumInput/CustomInputDate'
 import CustomInputTime from '@/components/PosterMaker/CostumInput/CustomInputTime'
@@ -98,15 +98,19 @@ export default {
     CustomInputTime
   },
   created() {
-    //this.time = new Date().toTimeString().slice(0,5)
+    this.selectedTitle = 'POSTER MAKER'
+    this.selectedSubject = "We design future's posters"
+    this.selectedDate = '07/12/2021'
+    this.selectedTime = '15:30'
+    this.selectedLocation = 'Google Meet'
   },
   computed: {
-    ...mapState("posterMaker", [
-        "title",
-        "subject",
-        "date",
-        "time",
-        "location"
+    ...mapState('posterMaker', [
+        'title',
+        'subject',
+        'date',
+        'time',
+        'location'
     ]),
     selectedTitle: {
       get() {
@@ -150,15 +154,15 @@ export default {
     }
   },
   methods: {
-    ...mapMutations("posterMaker", [
-        "setTitle",
-        "setSubject",
-        "setDate",
-        "setTime",
-        "setLocation",
-        "selectColor",
-        "selectLayout",
-        "selectFont"
+    ...mapMutations('posterMaker', [
+        'setTitle',
+        'setSubject',
+        'setDate',
+        'setTime',
+        'setLocation',
+        'selectColor',
+        'selectLayout',
+        'selectFont'
     ])
   }
 }
