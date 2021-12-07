@@ -24,7 +24,6 @@
 
 <script>
 import { mapState } from 'vuex'
-import textFit from '@/assets/scripts/textFit'
 
 export default {
   computed: {
@@ -36,9 +35,6 @@ export default {
         'location'
     ])
   },
-  mounted() {
-    // textFit(document.getElementById("title"))
-  }
 }
 </script>
 
