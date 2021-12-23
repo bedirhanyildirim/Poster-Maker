@@ -101,7 +101,7 @@ export default {
   },
   created() {
     this.selectedTitle = 'POSTER MAKER'
-    this.selectedSubject = "We design future's posters"
+    this.selectedSubject = 'We design posters in one click'
     this.selectedDate = '07/12/2021'
     this.selectedTime = '15:30'
     this.selectedLocation = 'Google Meet'

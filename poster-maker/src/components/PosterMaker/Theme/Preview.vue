@@ -64,6 +64,7 @@ export default {
 
       #title {
         font-size: 2.8em;
+        line-height: 1.2em;
         font-weight: bold;
         margin-bottom: 2rem;
       }
