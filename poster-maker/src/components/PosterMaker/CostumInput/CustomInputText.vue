@@ -10,6 +10,7 @@
     :name="name"
     v-model="value"
     :placeholder="placeholder"
+    :maxlength="maxChar"
     @input="onInput"
     @change="onChange"/>
   <div class="clear" v-if="clearable && (value !== '')">
@@ -40,6 +41,10 @@ export default {
       type: String,
       required: false,
       default: undefined
+    },
+    maxChar: {
+      type: Number,
+      required: false
     }
   },
   computed: {

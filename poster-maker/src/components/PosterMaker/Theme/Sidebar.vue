@@ -47,6 +47,7 @@
           :clearable="true"
           icon-name="title"
           placeholder="title"
+          :max-char="50"
           v-model="selectedTitle">
         </CustomInputText>
       </div>
@@ -55,6 +56,7 @@
           :clearable="true"
           icon-name="text_fields"
           placeholder="subject"
+          :max-char="180"
           v-model="selectedSubject">
         </CustomInputText>
       </div>
