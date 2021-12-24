@@ -2,7 +2,7 @@
   <div id="poster-maker-layout">
     <Header></Header>
     <div id="content">
-      <Sidebar></Sidebar>
+      <ToolBar></ToolBar>
       <Preview id="preview"></Preview>
       <Artboards></Artboards>
     </div>
@@ -14,13 +14,15 @@ import Header from '@/components/PosterMaker/Theme/Header'
 import Sidebar from '@/components/PosterMaker/Theme/Sidebar'
 import Preview from '@/components/PosterMaker/Theme/Preview'
 import Artboards from '@/components/PosterMaker/Theme/Artboards'
+import ToolBar from "@/components/PosterMaker/ToolBar/ToolBar";
 
 export default {
   components: {
     Header,
     Sidebar,
     Preview,
-    Artboards
+    Artboards,
+    ToolBar
   }
 }
 </script>
