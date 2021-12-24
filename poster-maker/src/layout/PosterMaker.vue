@@ -51,7 +51,7 @@ html {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    height: calc(100vh - 60px);
+    height: calc(100vh - 62px);
 
     #preview {
       flex-grow: 1;
