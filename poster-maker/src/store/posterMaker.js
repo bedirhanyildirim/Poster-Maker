@@ -1,13 +1,17 @@
 const state = {
-  title: '',
-  subject: '',
-  date: '',
-  time: '',
-  location: '',
+  title: 'Poster Maker',
+  subject: 'The cool way of poster design',
+  date: '01/01/2022',
+  time: '20:12',
+  location: 'bedirhan.design',
   colors: [],
   selectedColor: undefined,
-  layouts: [],
-  selectedLayout: undefined,
+  layouts: {
+    LEFT: 'LEFT',
+    CENTER: 'CENTER',
+    RIGHT: 'RIGHT'
+  },
+  selectedLayout: 'LEFT',
   fonts: [],
   selectedFont: undefined,
   toolBarMenu: {
@@ -43,20 +47,20 @@ const mutations = {
   setColors(state, colorSets) {
     state.colors = colorSets
   },
-  selectColor(state, colorSet) {
-    state.colors = colorSet
+  setColor(state, color) {
+    state.selectedColor = color
   },
-  setLayouts(state, layoutSets) {
-    state.colors = layoutSets
+  setLayouts(state, layouts) {
+    state.layouts = layouts
   },
-  selectLayout(state, layout) {
-    state.colors = layout
+  setLayout(state, layout) {
+    state.selectedLayout = layout
   },
-  setFonts(state, fontSets) {
-    state.colors = fontSets
+  setFonts(state, fonts) {
+    state.fonts = fonts
   },
-  selectFont(state, font) {
-    state.colors = font
+  setFont(state, font) {
+    state.selectedFont = font
   },
   setToolBar(state, menu) {
     state.selectedToolBar = menu

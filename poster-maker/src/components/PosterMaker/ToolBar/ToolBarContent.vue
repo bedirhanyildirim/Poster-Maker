@@ -20,15 +20,30 @@
   </div>
   <div class="tool-bar-content-group" v-if="isSelected(this.toolBarMenu.FONT)">
     <ToolBarContentTitle title="Fonts"></ToolBarContentTitle>
+    <ToolBarContentItem>
+      <h4>Font 1</h4>
+    </ToolBarContentItem>
+    <ToolBarContentItem>
+      <h4>Font 2</h4>
+    </ToolBarContentItem>
   </div>
   <div class="tool-bar-content-group" v-if="isSelected(this.toolBarMenu.ALIGN)">
-    <ToolBarContentTitle title="Alignment"></ToolBarContentTitle>
+    <ToolBarContentTitle title="Layout"></ToolBarContentTitle>
+    <ToolBarContentItem>
+      <AlignInput></AlignInput>
+    </ToolBarContentItem>
   </div>
   <div class="tool-bar-content-group" v-if="isSelected(this.toolBarMenu.COLOR)">
     <ToolBarContentTitle title="Colors"></ToolBarContentTitle>
+    <ToolBarContentItem>
+      <h4>Color 1</h4>
+    </ToolBarContentItem>
   </div>
   <div class="tool-bar-content-group" v-if="isSelected(this.toolBarMenu.BACKGROUND)">
     <ToolBarContentTitle title="Background"></ToolBarContentTitle>
+    <ToolBarContentItem>
+      <h4>Background 1</h4>
+    </ToolBarContentItem>
   </div>
 </div>
 </template>
@@ -41,6 +56,7 @@ import SubjectInput from "@/components/PosterMaker/Inputs/SubjectInput";
 import DateInput from "@/components/PosterMaker/Inputs/DateInput";
 import TimeInput from "@/components/PosterMaker/Inputs/TimeInput";
 import LocationInput from "@/components/PosterMaker/Inputs/LocationInput";
+import AlignInput from "@/components/PosterMaker/Inputs/AlignInput";
 import { mapState } from "vuex";
 
 export default {
@@ -51,7 +67,8 @@ export default {
     SubjectInput,
     DateInput,
     TimeInput,
-    LocationInput
+    LocationInput,
+    AlignInput
   },
   computed: {
     ...mapState('posterMaker', [
