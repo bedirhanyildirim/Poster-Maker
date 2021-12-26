@@ -1,6 +1,6 @@
 <template>
-<div id="tool-bar-menu-item">
-  <a class="icon-button">
+<div id="tool-bar-menu-item" @click="select">
+  <a class="icon-button" :class="isSelected">
     <span v-if="iconName" class="material-icons">
       {{ iconName }}
     </span>
@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import { mapMutations, mapState } from "vuex";
+
 export default {
   props: {
     iconName: {
@@ -21,6 +23,22 @@ export default {
     text: {
       type: String,
       required: false
+    },
+    name: {
+      type: String,
+      required: true
+    }
+  },
+  computed: {
+    ...mapState('posterMaker', ['selectedToolBar']),
+    isSelected() {
+      return this.selectedToolBar === this.name ? 'active' : ''
+    }
+  },
+  methods: {
+    ...mapMutations('posterMaker', ['setToolBar']),
+    select() {
+      this.setToolBar(this.name)
     }
   }
 }
@@ -42,6 +60,7 @@ export default {
     padding: 8px;
     color: #666666;
     font-weight: 600;
+    transition: all 200ms ease;
 
     &:hover {
       color: #333333;
