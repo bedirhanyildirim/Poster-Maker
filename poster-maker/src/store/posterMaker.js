@@ -68,7 +68,10 @@ const mutations = {
 }
 
 const actions = {
-  // to use axios to make backend calls
+  async getGoogleFonts({commit}) {
+    const googleFontsUrl = 'https://www.googleapis.com/webfonts/v1/webfonts?key=' + process.env.VUE_APP_GOOGLE_FONT_API_KEY
+    await fetch(googleFontsUrl).then(res => res.json()).then(console.log)
+  }
 }
 
 export default {

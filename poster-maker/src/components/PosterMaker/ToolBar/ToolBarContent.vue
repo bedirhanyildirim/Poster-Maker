@@ -57,7 +57,7 @@ import DateInput from "@/components/PosterMaker/Inputs/DateInput";
 import TimeInput from "@/components/PosterMaker/Inputs/TimeInput";
 import LocationInput from "@/components/PosterMaker/Inputs/LocationInput";
 import AlignInput from "@/components/PosterMaker/Inputs/AlignInput";
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 
 export default {
   components: {
@@ -76,7 +76,11 @@ export default {
       'selectedToolBar'
     ])
   },
+  async mounted() {
+    await this.getGoogleFonts();
+  },
   methods: {
+    ...mapActions('posterMaker', ['getGoogleFonts']),
     isSelected(name) {
       return this.selectedToolBar === name
     }
