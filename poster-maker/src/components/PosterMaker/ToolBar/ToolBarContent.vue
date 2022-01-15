@@ -21,10 +21,7 @@
   <div class="tool-bar-content-group" v-if="isSelected(this.toolBarMenu.FONT)">
     <ToolBarContentTitle title="Fonts"></ToolBarContentTitle>
     <ToolBarContentItem>
-      <h4>Font 1</h4>
-    </ToolBarContentItem>
-    <ToolBarContentItem>
-      <h4>Font 2</h4>
+      <FontInput></FontInput>
     </ToolBarContentItem>
   </div>
   <div class="tool-bar-content-group" v-if="isSelected(this.toolBarMenu.ALIGN)">
@@ -57,6 +54,7 @@ import DateInput from "@/components/PosterMaker/Inputs/DateInput";
 import TimeInput from "@/components/PosterMaker/Inputs/TimeInput";
 import LocationInput from "@/components/PosterMaker/Inputs/LocationInput";
 import AlignInput from "@/components/PosterMaker/Inputs/AlignInput";
+import FontInput from "@/components/PosterMaker/Inputs/FontInput";
 import { mapState, mapActions } from "vuex";
 
 export default {
@@ -68,7 +66,8 @@ export default {
     DateInput,
     TimeInput,
     LocationInput,
-    AlignInput
+    AlignInput,
+    FontInput
   },
   computed: {
     ...mapState('posterMaker', [
