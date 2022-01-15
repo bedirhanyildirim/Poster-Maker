@@ -83,8 +83,8 @@ export default {
         {
           name: 'Gray',
           type: 'solid',
-          baseColor: '#B6B6B6',
-          fontColor: '#ffffff'
+          baseColor: '#D9D9D9',
+          fontColor: '#000000'
         },
         {
           name: 'Black',
