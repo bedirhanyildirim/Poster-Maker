@@ -1,9 +1,9 @@
 const state = {
-  title: 'Poster Maker',
-  subject: 'The cool way of poster design',
-  date: '01/01/2022',
-  time: '20:12',
-  location: 'bedirhan.design',
+  title: '',
+  subject: '',
+  date: '',
+  time: '',
+  location: '',
   colors: [],
   selectedColor: undefined,
   layouts: {

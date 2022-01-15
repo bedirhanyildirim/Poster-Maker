@@ -129,15 +129,41 @@ export default {
     ...mapState('posterMaker', [
       'toolBarMenu',
       'selectedToolBar'
-    ])
+    ]),
+    getToday() {
+      let today = new Date()
+      let dd = String(today.getDate()).padStart(2, '0')
+      let mm = String(today.getMonth() + 1).padStart(2, '0')
+      let yyyy = today.getFullYear()
+      return dd + '.' + mm + '.' + yyyy
+    },
+    getTime() {
+      let today = new Date()
+      let hh = String(today.getHours())
+      let mm = String(today.getMinutes())
+      return (hh < 10 ? '0' + hh : hh) + ':' + (mm < 10 ? '0' + mm : mm)
+    }
   },
   async mounted() {
+    this.setTitle('Poster Maker')
+    this.setSubject('The cool way of poster design')
+    this.setDate(this.getToday)
+    this.setTime(this.getTime)
+    this.setLocation('bedirhan.design')
     await this.getGoogleFonts()
     this.setColors(this.colors)
     this.setColor(this.colors[0])
   },
   methods: {
-    ...mapMutations('posterMaker', ['setColor', 'setColors']),
+    ...mapMutations('posterMaker', [
+      'setColor',
+      'setColors',
+      'setTitle',
+      'setSubject',
+      'setDate',
+      'setTime',
+      'setLocation'
+    ]),
     ...mapActions('posterMaker', ['getGoogleFonts']),
     isSelected(name) {
       return this.selectedToolBar === name
