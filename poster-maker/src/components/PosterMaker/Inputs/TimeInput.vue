@@ -1,20 +1,29 @@
 <template>
 <div id="time-input">
-  <CustomInputTime
+  <!--CustomInputTime
     :clearable="true"
     icon-name="schedule"
     v-model="selectedTime"
-  ></CustomInputTime>
+  ></CustomInputTime-->
+  <CustomInputText
+    :clearable="true"
+    :max-char="5"
+    v-model="selectedTime"
+    icon-name="schedule"
+    placeholder="dd/mm/yyyy"
+  ></CustomInputText>
 </div>
 </template>
 
 <script>
-import CustomInputTime from "@/components/PosterMaker/CostumInput/CustomInputTime";
+import CustomInputTime from '@/components/PosterMaker/CostumInput/CustomInputTime'
+import CustomInputText from '@/components/PosterMaker/CostumInput/CustomInputText'
 import { mapMutations, mapState } from "vuex";
 
 export default {
   components: {
-    CustomInputTime
+    CustomInputTime,
+    CustomInputText
   },
   computed: {
     ...mapState('posterMaker', ['time']),
