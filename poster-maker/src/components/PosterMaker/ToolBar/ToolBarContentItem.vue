@@ -13,7 +13,6 @@ export default {
 <style lang="scss" scoped>
 #tool-bar-content-item {
   width: 100%;
-  height: 60px;
   padding: 16px;
   display: flex;
   align-items: center;

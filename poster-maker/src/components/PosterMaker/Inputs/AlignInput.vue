@@ -3,7 +3,7 @@
     class="align"
     v-for="al in this.layouts"
     :key="al"
-    :class="isSelected(al) ? 'selected' : ''"
+    :class="[{'selected': isSelected(al)}, al.toLowerCase()]"
     @click="select(al)"
   ><span>{{ al }}</span>
   </div>
@@ -36,33 +36,48 @@ export default {
 #align-input {
   width: 100%;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: space-between;
 
   .align {
-    padding: 4px;
-    color: #666666;
-    font-size: 16px;
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 16px;
+    color: #505050;
+    font-size: .9rem;
+    border-radius: 4px;
     font-weight: normal;
     transition: all 200ms ease;
-    background-color: transparent;
-    border-bottom: 1px solid transparent;
+    background-color: #ffffff;
+    border: 1px solid #E4E4E4;
 
     &:hover {
-      color: #000000;
       cursor: pointer;
-      border-bottom-color: #1ba5ec;
+      border-color: #1ba5ec;
     }
 
     &.selected {
       color: #000000;
-      border-bottom-color: #1ba5ec;
+      border-color: #1ba5ec;
     }
 
     span {
       text-transform: lowercase;
     }
+
+    &:last-child{
+      margin-bottom: 0;
+    }
   }
+}
+.left {
+  text-align: left;
+}
+.center {
+  text-align: center;
+}
+.right {
+  text-align: right;
 }
 </style>
