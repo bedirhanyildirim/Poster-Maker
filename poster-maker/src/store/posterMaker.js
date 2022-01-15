@@ -21,7 +21,9 @@ const state = {
     COLOR: 'COLOR',
     BACKGROUND: 'BACKGROUND'
   },
-  selectedToolBar: 'TEXT'
+  selectedToolBar: 'TEXT',
+  artboards: [],
+  selectedArtboard: undefined
 }
 
 const getters = {
@@ -64,6 +66,12 @@ const mutations = {
   },
   setToolBar(state, menu) {
     state.selectedToolBar = menu
+  },
+  setArtboards(state, artboards) {
+    state.artboards = artboards
+  },
+  setArtboard(state, artboard) {
+    state.selectedArtboard = artboard
   }
 }
 
