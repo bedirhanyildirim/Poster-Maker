@@ -11,15 +11,13 @@
 
 <script>
 import Header from '@/components/PosterMaker/Theme/Header'
-import Sidebar from '@/components/PosterMaker/Theme/Sidebar'
 import Preview from '@/components/PosterMaker/Theme/Preview'
 import Artboards from '@/components/PosterMaker/Theme/Artboards'
-import ToolBar from "@/components/PosterMaker/ToolBar/ToolBar";
+import ToolBar from '@/components/PosterMaker/ToolBar/ToolBar'
 
 export default {
   components: {
     Header,
-    Sidebar,
     Preview,
     Artboards,
     ToolBar

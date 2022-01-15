@@ -72,7 +72,7 @@ const actions = {
     const googleFontsUrl = 'https://www.googleapis.com/webfonts/v1/webfonts?sort=popularity&key=' + process.env.VUE_APP_GOOGLE_FONT_API_KEY
     const allFonts = await fetch(googleFontsUrl)
                       .then(res => res.json())
-    commit('setFonts', allFonts.items.slice(0, 5))
+    commit('setFonts', allFonts.items.slice(0, 10))
     commit('setFont', allFonts.items[0])
   }
 }

@@ -1,5 +1,6 @@
 <template>
-<div id="align-input"><div
+<div id="align-input">
+  <div
     class="align"
     v-for="al in this.layouts"
     :key="al"
