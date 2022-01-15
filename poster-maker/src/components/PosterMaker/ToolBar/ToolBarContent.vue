@@ -33,7 +33,7 @@
   <div class="tool-bar-content-group" v-if="isSelected(this.toolBarMenu.COLOR)">
     <ToolBarContentTitle title="Colors"></ToolBarContentTitle>
     <ToolBarContentItem>
-      <h4>Color 1</h4>
+      <ColorInput></ColorInput>
     </ToolBarContentItem>
   </div>
   <div class="tool-bar-content-group" v-if="isSelected(this.toolBarMenu.BACKGROUND)">
@@ -55,7 +55,8 @@ import TimeInput from "@/components/PosterMaker/Inputs/TimeInput";
 import LocationInput from "@/components/PosterMaker/Inputs/LocationInput";
 import AlignInput from "@/components/PosterMaker/Inputs/AlignInput";
 import FontInput from "@/components/PosterMaker/Inputs/FontInput";
-import { mapState, mapActions } from "vuex";
+import ColorInput from "@/components/PosterMaker/Inputs/ColorInput";
+import {mapState, mapActions, mapMutations} from "vuex";
 
 export default {
   components: {
@@ -67,7 +68,62 @@ export default {
     TimeInput,
     LocationInput,
     AlignInput,
-    FontInput
+    FontInput,
+    ColorInput
+  },
+  data() {
+    return {
+      colors: [
+        {
+          name: 'White',
+          type: 'solid',
+          baseColor: '#ffffff',
+          fontColor: '#000000'
+        },
+        {
+          name: 'Gray',
+          type: 'solid',
+          baseColor: '#B6B6B6',
+          fontColor: '#ffffff'
+        },
+        {
+          name: 'Black',
+          type: 'solid',
+          baseColor: '#232323',
+          fontColor: '#ffffff'
+        },
+        {
+          name: 'Instagram 1',
+          type: 'linearGradient',
+          baseColor: 'linear-gradient(135deg, #B72ACD, #F98E36)',
+          fontColor: '#ffffff'
+        },
+        {
+          name: 'Instagram 2',
+          type: 'linearGradient',
+          baseColor: 'linear-gradient(135deg, #B52CCA, #47ADFF)',
+          fontColor: '#ffffff'
+        },
+        {
+          name: 'Instagram 3',
+          type: 'linearGradient',
+          baseColor: 'linear-gradient(135deg, #52B023, #28C4F4)',
+          fontColor: '#ffffff'
+        },
+        {
+          name: 'Instagram 4',
+          type: 'linearGradient',
+          baseColor: 'linear-gradient(135deg, #D9434F, #F9CB65)',
+          fontColor: '#ffffff'
+        },
+        {
+          name: 'Instagram 5',
+          type: 'linearGradient',
+          baseColor: 'linear-gradient(135deg, #B72BCD, #FF6875)',
+          fontColor: '#ffffff'
+        }
+      ]
+    }
   },
   computed: {
     ...mapState('posterMaker', [
@@ -76,9 +132,12 @@ export default {
     ])
   },
   async mounted() {
-    await this.getGoogleFonts();
+    await this.getGoogleFonts()
+    this.setColors(this.colors)
+    this.setColor(this.colors[0])
   },
   methods: {
+    ...mapMutations('posterMaker', ['setColor', 'setColors']),
     ...mapActions('posterMaker', ['getGoogleFonts']),
     isSelected(name) {
       return this.selectedToolBar === name
