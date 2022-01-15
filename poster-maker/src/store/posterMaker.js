@@ -69,8 +69,11 @@ const mutations = {
 
 const actions = {
   async getGoogleFonts({commit}) {
-    const googleFontsUrl = 'https://www.googleapis.com/webfonts/v1/webfonts?key=' + process.env.VUE_APP_GOOGLE_FONT_API_KEY
-    await fetch(googleFontsUrl).then(res => res.json()).then(console.log)
+    const googleFontsUrl = 'https://www.googleapis.com/webfonts/v1/webfonts?sort=popularity&key=' + process.env.VUE_APP_GOOGLE_FONT_API_KEY
+    const allFonts = await fetch(googleFontsUrl)
+                      .then(res => res.json())
+    commit('setFonts', allFonts.items.slice(0, 5))
+    commit('setFont', allFonts.items[0])
   }
 }
 
