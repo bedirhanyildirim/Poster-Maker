@@ -61,11 +61,70 @@
       <router-link to="/image-cropper">Image Cropper</router-link>
     </div>
   </div>
+  <div class="download">
+    <a @click="download" class="icon-button download-button">
+      <span class="material-icons-sharp">
+        download
+      </span>
+    </a>
+  </div>
 </div>
 </template>
 
 <script>
+import c2h from '@/assets/scripts/html2canvas'
+import { mapState } from 'vuex'
+
 export default {
+  computed: {
+    data() {
+      return {
+        ctx: undefined,
+        img: undefined
+      }
+    },
+    ...mapState('posterMaker', ['title', 'selectedArtboard']),
+    getScale() {
+      return this.selectedArtboard.scale
+    },
+    getWidth() {
+      return this.selectedArtboard.previewWidth
+    },
+    getHeight() {
+      return this.selectedArtboard.previewHeight
+    },
+    getName() {
+      let lowerCased = this.title.toLowerCase()
+      let deletedWhiteSpace = lowerCased.replace(/\s/g, '_')
+      return deletedWhiteSpace
+    }
+  },
+  methods: {
+    download() {
+      c2h(document.getElementById('artboard'), {
+        scale: this.getScale,
+        width: this.getWidth,
+        height: this.getHeight,
+        useCORS: true,
+        logging: false,
+        allowTaint: true,
+        letterRendering: true,
+      }).then(canvas => {
+        this.ctx = canvas.getContext('2d')
+        this.ctx.imageSmoothingEnabled = true
+        this.ctx.imageSmoothingQuality = 'high'
+        this.ctx.mozImageSmoothingEnabled = true
+        this.ctx.webkitImageSmoothingEnabled = true
+        this.img = canvas.toDataURL('image/png')
+
+        const link = document.createElement('a')
+        link.href = this.img.replace('image/png', 'image/octet-stream')
+        link.download = this.getName + '_' + Date.now() + '.png'
+        link.click()
+        URL.revokeObjectURL(link.href)
+      })
+    }
+  }
 }
 </script>
 
@@ -144,6 +203,26 @@ export default {
         &.router-link-active {
           color: #505050;
         }
+      }
+    }
+  }
+
+  .download {
+    width: 60px;
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+    justify-content: center;
+
+    .download-button {
+      display: flex;
+      color: #666666;
+      justify-content: center;
+      transition: all 200ms ease;
+
+      &:hover {
+        cursor: pointer;
+        color: #232323;
       }
     }
   }
