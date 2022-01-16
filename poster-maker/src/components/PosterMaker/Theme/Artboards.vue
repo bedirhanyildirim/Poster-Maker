@@ -17,15 +17,24 @@ export default {
       artboards: [
         {
           name: 'Square',
-          ratio: '1:1'
+          ratio: '1:1',
+          previewWidth: 500,
+          previewHeight: 500,
+          scale: 2
         },
         {
           name: 'Portrait',
-          ratio: '9:16'
+          ratio: '9:16',
+          previewWidth: 270,
+          previewHeight: 480,
+          scale: 4
         },
         {
           name: 'Landscape',
-          ratio: '16:9'
+          ratio: '16:9',
+          previewWidth: 480,
+          previewHeight: 270,
+          scale: 4
         }
       ]
     }
