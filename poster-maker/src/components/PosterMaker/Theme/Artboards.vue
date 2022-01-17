@@ -17,24 +17,43 @@ export default {
       artboards: [
         {
           name: 'Square',
+          description: 'Instagram and Facebook Post',
           ratio: '1:1',
           previewWidth: 500,
           previewHeight: 500,
           scale: 2
         },
         {
-          name: 'Portrait',
-          ratio: '9:16',
-          previewWidth: 270,
-          previewHeight: 480,
-          scale: 4
+          name: 'Vertical',
+          description: 'Facebook',
+          ratio: '2:3',
+          previewWidth: 400,
+          previewHeight: 600,
+          scale: 2
         },
         {
-          name: 'Landscape',
+          name: 'Vertical',
+          description: 'Instagram and Facebook Post',
+          ratio: '4:5',
+          previewWidth: 360,
+          previewHeight: 450,
+          scale: 3
+        },
+        {
+          name: 'Full Vertical',
+          description: 'Instagram Story, IGTV',
+          ratio: '9:16',
+          previewWidth: 360,
+          previewHeight: 640,
+          scale: 3
+        },
+        {
+          name: 'Landscape HD',
+          description: 'YouTube',
           ratio: '16:9',
-          previewWidth: 480,
-          previewHeight: 270,
-          scale: 4
+          previewWidth: 640,
+          previewHeight: 360,
+          scale: 3
         }
       ]
     }

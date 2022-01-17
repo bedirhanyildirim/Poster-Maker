@@ -6,7 +6,7 @@
     :key="artboard.name"
     :class="{'selected': isSelected(artboard)}"
     @click="select(artboard)"
-  >{{ artboard.name }} ({{ artboard.ratio }})</div>
+  >{{ artboard.name }} ({{ artboard.ratio }}) <br> <p>{{ artboard.description }}</p></div>
 </div>
 </template>
 
@@ -61,6 +61,12 @@ export default {
 
     &:last-child{
       margin-bottom: 0;
+    }
+
+    p {
+      color: #9F9F9F;
+      margin-top: 4px;
+      font-size: small;
     }
   }
 }
