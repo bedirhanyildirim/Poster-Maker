@@ -95,30 +95,45 @@ export default {
         {
           name: 'Instagram 1',
           type: 'linearGradient',
+          gradientStart: '#B72ACD',
+          gradientEnd: '#F98E36',
+          gradientDegree: '135',
           baseColor: 'linear-gradient(135deg, #B72ACD, #F98E36)',
           fontColor: '#ffffff'
         },
         {
           name: 'Instagram 2',
           type: 'linearGradient',
+          gradientStart: '#B52CCA',
+          gradientEnd: '#47ADFF',
+          gradientDegree: '135',
           baseColor: 'linear-gradient(135deg, #B52CCA, #47ADFF)',
           fontColor: '#ffffff'
         },
         {
           name: 'Instagram 3',
           type: 'linearGradient',
+          gradientStart: '#52B023',
+          gradientEnd: '#28C4F4',
+          gradientDegree: '135',
           baseColor: 'linear-gradient(135deg, #52B023, #28C4F4)',
           fontColor: '#ffffff'
         },
         {
           name: 'Instagram 4',
           type: 'linearGradient',
+          gradientStart: '#D9434F',
+          gradientEnd: '#F9CB65',
+          gradientDegree: '135',
           baseColor: 'linear-gradient(135deg, #D9434F, #F9CB65)',
           fontColor: '#ffffff'
         },
         {
           name: 'Instagram 5',
           type: 'linearGradient',
+          gradientStart: '#B72BCD',
+          gradientEnd: '#FF6875',
+          gradientDegree: '135',
           baseColor: 'linear-gradient(135deg, #B72BCD, #FF6875)',
           fontColor: '#ffffff'
         }
