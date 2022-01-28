@@ -2,17 +2,18 @@
   "name": "poster-maker",
   "version": "0.1.0",
   "private": true,
+  "license": "GPL V3",
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "core-js": "^3.6.5",
-    "firebase": "^8.2.5",
-    "register-service-worker": "^1.7.1",
-    "vue": "^2.6.11",
-    "vue-router": "^3.2.0",
-    "vuex": "^3.4.0"
+    "core-js": "^3.20.3",
+    "firebase": "^9.6.4",
+    "register-service-worker": "^1.7.2",
+    "vue": "^2.6.14",
+    "vue-router": "^3.5.3",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -20,8 +21,9 @@
     "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
-    "node-sass": "^4.12.0",
-    "sass-loader": "^8.0.2",
-    "vue-template-compiler": "^2.6.11"
+    "node-sass": "^7.0.1",
+    "sass": "^1.49.0",
+    "sass-loader": "^10.2.1",
+    "vue-template-compiler": "^2.6.14"
   }
 }

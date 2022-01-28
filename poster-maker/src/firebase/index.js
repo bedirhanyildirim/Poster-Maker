@@ -1,6 +1,6 @@
-import firebase from 'firebase/app'
+import { initializeApp } from 'firebase/app'
 
-const config = firebase.initializeApp({
+const firebaseConfig = {
     apiKey: process.env.VUE_APP_API_KEY,
     authDomain: process.env.VUE_APP_PROJECT_ID + '.firebaseapp.com',
     databaseURL: 'https://' + process.env.VUE_APP_PROJECT_ID + '.firebaseio.com',
@@ -9,4 +9,6 @@ const config = firebase.initializeApp({
     messagingSenderId: process.env.VUE_APP_SENDER_ID,
     appId: process.env.VUE_APP_APP_ID,
     measurementId: process.env.VUE_APP_MEASUREMENT_ID
-})
+}
+
+const app = initializeApp(firebaseConfig)
