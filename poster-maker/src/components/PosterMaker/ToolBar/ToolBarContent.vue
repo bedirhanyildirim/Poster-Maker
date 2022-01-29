@@ -39,7 +39,7 @@
   <div class="tool-bar-content-group" v-if="isSelected(this.toolBarMenu.BACKGROUND)">
     <ToolBarContentTitle title="Background"></ToolBarContentTitle>
     <ToolBarContentItem>
-      <h4>Background 1</h4>
+      <BlobInput/>
     </ToolBarContentItem>
   </div>
 </div>
@@ -56,6 +56,7 @@ import LocationInput from "@/components/PosterMaker/Inputs/LocationInput";
 import AlignInput from "@/components/PosterMaker/Inputs/AlignInput";
 import FontInput from "@/components/PosterMaker/Inputs/FontInput";
 import ColorInput from "@/components/PosterMaker/Inputs/ColorInput";
+import BlobInput from "@/components/PosterMaker/Inputs/BlobInput";
 import {mapState, mapActions, mapMutations} from "vuex";
 
 export default {
@@ -69,7 +70,8 @@ export default {
     LocationInput,
     AlignInput,
     FontInput,
-    ColorInput
+    ColorInput,
+    BlobInput
   },
   data() {
     return {
