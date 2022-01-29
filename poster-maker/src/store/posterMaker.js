@@ -23,7 +23,8 @@ const state = {
   },
   selectedToolBar: 'TEXT',
   artboards: [],
-  selectedArtboard: undefined
+  selectedArtboard: undefined,
+  blobs: []
 }
 
 const getters = {
@@ -72,6 +73,18 @@ const mutations = {
   },
   setArtboard(state, artboard) {
     state.selectedArtboard = artboard
+  },
+  setBlob(state, blob) {
+    state.blobs.push(blob);
+  },
+  removeBlob(state, blob) {
+    state.blobs.filter(b => b !== blob)
+  },
+  removeOneBlob(state) {
+    state.blobs.pop()
+  },
+  resetBlobs(state) {
+    state.blobs = []
   }
 }
 
