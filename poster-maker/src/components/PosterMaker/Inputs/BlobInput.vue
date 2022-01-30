@@ -1,21 +1,43 @@
 <template>
   <div id="blob-input" @click="activateBlobs" :class="this.blobs.length > 0 ? 'selected': undefined">
     <div class="title">Blobs</div>
-    <div @click="randomise" class="icon">
+    <div class="count" :style="{opacity: this.blobs.length > 0 ? 1 : 0}">
+      <div class="icon add" @click="addOneBlob">
+      <span class="material-icons-outlined">
+        add
+      </span>
+      </div>
+      <div class="icon remove" @click="deleteOneBlob">
+      <span class="material-icons-outlined">
+        remove
+      </span>
+      </div>
+    </div>
+    <div @click="randomise" class="icon random">
       <span class="material-icons-outlined">
       casino
     </span>
+    </div>
+    <div @click="clearBlobs" class="icon close" :style="{opacity: this.blobs.length > 0 ? 1 : 0}">
+      <span class="material-icons-outlined">
+        close
+      </span>
     </div>
   </div>
 </template>
 
 <script>
-import {mapMutations, mapState} from "vuex";
+import {mapMutations, mapState, mapGetters} from "vuex";
 
 export default {
   data: function () {
     return {
       blobCount: 3
+    }
+  },
+  mounted() {
+    if (this.blobs.length > 0) {
+      this.blobCount = this.blobs.length
     }
   },
   computed: {
@@ -30,14 +52,15 @@ export default {
     ]),
     randomise(e) {
       e ? e.stopPropagation() : undefined
+      let targetCount = this.blobs.length === 0 ? this.blobCount : this.blobs.length
       this.resetBlobs()
-      for (let i = 0; i < this.blobCount; i++) {
+      for (let i = 0; i < targetCount; i++) {
         this.addBlob(this.generateBlob())
       }
     },
     activateBlobs() {
       if (this.blobs.length === 0) {
-        for (let i = 0; i < this.blobCount; i++) {
+        for (let i = 0; i < 3; i++) {
           this.addBlob(this.generateBlob())
         }
       }
@@ -65,8 +88,21 @@ export default {
     addBlob(blob) {
       this.setBlob(blob)
     },
-    clearBlobs() {
+    clearBlobs(e) {
+      e ? e.stopPropagation() : undefined
       this.resetBlobs()
+    },
+    addOneBlob() {
+      if (this.blobCount < 4) {
+        this.addBlob(this.generateBlob())
+        this.blobCount++
+      }
+    },
+    deleteOneBlob() {
+      if (this.blobCount > 1) {
+        this.removeOneBlob()
+        this.blobCount--
+      }
     }
   }
 }
@@ -75,23 +111,24 @@ export default {
 <style lang="scss" scoped>
 #blob-input {
   width: 100%;
-  padding: 8px 8px 8px 16px;
   display: flex;
-  color: #505050;
+  color: #666666;
   font-size: .9rem;
   border-radius: 4px;
   font-weight: normal;
   align-items: center;
+  padding: 8px 8px 8px 16px;
   background-color: #ffffff;
   border: 1px solid #E4E4E4;
   transition: all 200ms ease;
   justify-content: flex-start;
 
   &:hover {
+    color: #000000;
     cursor: pointer;
     border-color: #1ba5ec;
 
-    span {
+    .random span {
       animation: wobble-hor-bottom 1s cubic-bezier(0.645, 0.045, 0.355, 1.000) both;
     }
   }
@@ -99,25 +136,63 @@ export default {
   &.selected {
     color: #000000;
     border-color: #1ba5ec;
+    .random {
+      color: #000000;
+    }
   }
 
-  .title {
-
-  }
-  .icon {
-    outline: none;
-    border: none;
-    background-color: #ffffff;
-    padding: 8px;
+  .count {
     display: flex;
     margin-left: auto;
+    justify-content: center;
+  }
+
+  .icon {
+    border: none;
+    display: flex;
+    outline: none;
+    cursor: pointer;
     border-radius: 50%;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
+    background-color: #ffffff;
+    transition: all 200ms ease;
 
     &:hover {
       background-color: #efefef;
+    }
+    span {
+      font-size: 20px;
+    }
+  }
+
+  .add {
+    padding: 4px;
+    color: #666666;
+  }
+
+  .remove {
+    padding: 4px;
+    color: #666666;
+  }
+
+  .random {
+    border: none;
+    padding: 8px;
+    display: flex;
+    outline: none;
+    cursor: pointer;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+  }
+
+  .close {
+    color: #666666;
+    &:hover {
+      color: #000000;
+      background-color: unset;
     }
   }
 }
