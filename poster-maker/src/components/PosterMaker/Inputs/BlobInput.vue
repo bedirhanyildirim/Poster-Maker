@@ -2,15 +2,15 @@
   <div id="blob-input" @click="activateBlobs" :class="this.blobs.length > 0 ? 'selected': undefined">
     <div class="title">Blobs</div>
     <div class="count" :style="{opacity: this.blobs.length > 0 ? 1 : 0}">
-      <div class="icon add" @click="addOneBlob">
-      <span class="material-icons-outlined">
-        add
-      </span>
-      </div>
       <div class="icon remove" @click="deleteOneBlob">
-      <span class="material-icons-outlined">
-        remove
-      </span>
+        <span class="material-icons-outlined">
+          remove
+        </span>
+      </div>
+      <div class="icon add" @click="addOneBlob">
+        <span class="material-icons-outlined">
+          add
+        </span>
       </div>
     </div>
     <div @click="randomise" class="icon random">
