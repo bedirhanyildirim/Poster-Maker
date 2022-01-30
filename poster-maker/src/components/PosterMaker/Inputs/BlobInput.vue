@@ -43,10 +43,6 @@ export default {
       }
     },
     generateBlob() {
-      //TODO: calculate it by the canvas size
-      let wh = Math.floor(Math.random() * 300 + 200)
-      //opacity range: 0.07- 0.15
-      let opacity = ((Math.random() * 8 + 7) / 100).toFixed(2)
       let percentage1 = Math.floor(Math.random() * 60 + 20)
       let percentage3 = Math.floor(Math.random() * 60 + 20)
       let percentage4 = Math.floor(Math.random() * 60 + 20)
@@ -59,9 +55,11 @@ export default {
       let blob = document.createElement('div')
       blob.classList.add('blob')
       blob.style.borderRadius = borderRadius
-      blob.style.width = wh + 'px'
-      blob.style.height = wh + 'px'
-      blob.style.opacity = opacity
+      //opacity range: 0.07- 0.15
+      blob.style.opacity = ((Math.random() * 8 + 7) / 100).toFixed(2)
+      blob.randomWH = Math.random()
+      blob.randomVerticalAlign = Math.random()
+      blob.randomHorizontalAlign = Math.random()
       return blob
     },
     addBlob(blob) {

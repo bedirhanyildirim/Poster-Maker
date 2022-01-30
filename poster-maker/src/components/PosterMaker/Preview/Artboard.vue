@@ -57,19 +57,23 @@ export default {
       'selectedFont',
       'selectedArtboard',
       'blobs'
-    ])
+    ]),
+    getSmallerSide() {
+      if (this.selectedArtboard.previewWidth > this.selectedArtboard.previewHeight ){
+        return this.selectedArtboard.previewHeight
+      }
+      return this.selectedArtboard.previewWidth
+    }
   },
   methods: {
     setBlobForPreview(blob) {
-      blob.style.display = 'block'
-      blob.style.minWidth = '200px'
-      blob.style.minHeight = '200px'
       blob.style.position = 'absolute'
       blob.style.backgroundColor = this.selectedColor.fontColor
-      //TODO: align for canvas size
-      let wh = blob.style.height.slice(0,-2)
-      blob.style.top = Math.floor(Math.random() * 500) - (wh/2) + 'px'
-      blob.style.left = Math.floor(Math.random() * 500) - (wh/2) + 'px'
+      let wh = Math.floor(blob.randomWH * (this.getSmallerSide / 5 * 3) + (this.getSmallerSide / 5 * 2))
+      blob.style.width = wh + 'px'
+      blob.style.height = wh + 'px'
+      blob.style.top = Math.floor(blob.randomVerticalAlign * this.selectedArtboard.previewHeight) - (wh/2) + 'px'
+      blob.style.left = Math.floor(blob.randomHorizontalAlign * this.selectedArtboard.previewWidth) - (wh/2) + 'px'
       return blob
     }
   }
