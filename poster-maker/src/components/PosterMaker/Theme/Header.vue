@@ -63,7 +63,7 @@
   </div>
   <div class="download">
     <a @click="download" class="icon-button download-button">
-      <span class="material-icons-sharp">
+      <span class="material-icons">
         download
       </span>
     </a>
