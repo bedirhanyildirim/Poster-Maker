@@ -1,10 +1,15 @@
 <template>
   <div id="poster-maker-layout">
-    <Header></Header>
-    <div id="content">
-      <ToolBar></ToolBar>
-      <Preview id="preview"></Preview>
-      <Artboards></Artboards>
+    <div class="web">
+      <Header></Header>
+      <div id="content">
+        <ToolBar></ToolBar>
+        <Preview id="preview"></Preview>
+        <Artboards></Artboards>
+      </div>
+    </div>
+    <div class="mobile">
+      <span>Please use desktop version</span>
     </div>
   </div>
 </template>
@@ -56,6 +61,19 @@ html {
     #preview {
       flex-grow: 1;
     }
+  }
+
+  .mobile {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .mobile {
+    display: block!important;
+  }
+  .web {
+    display: none!important;;
   }
 }
 </style>
