@@ -1,64 +1,17 @@
 <template>
 <div id="home">
-  <div id="content">
-    <header-theme></header-theme>
-    <div id="form">
-      <poster-form @title="updateTitle" @subject="updateSubject" @date="updateDate"
-      @time="updateTime" @location="updateLocation"></poster-form>
-    </div>
-    <footer-theme></footer-theme>
+  <div class="welcome-text">
+    Here is going to be the homepage of <b>bedirhan.design</b>
   </div>
-  <div id="preview">
-    <poster-preview :title="title" :subject="subject" :date="getDateFormated" :time="time" :location="location">
-    </poster-preview>
-  </div>
+  <ul>
+    <li><RouterLink to="/poster-maker">Go to Poster Maker</RouterLink></li>
+    <li><RouterLink to="/image-cropper">Go to Image Cropper</RouterLink></li>
+  </ul>
 </div>
 </template>
 
 <script>
-import HeaderTheme from '../components/PosterMaker/Theme/Header'
-import FooterTheme from '../components/PosterMaker/Theme/Footer'
-import PosterForm from '../components/form.poster'
-import PosterPreview from '../components/preview.poster'
 export default {
-  components: { HeaderTheme, FooterTheme, PosterForm, PosterPreview },
-  data: function () {
-    return {
-      title: '',
-      subject: '',
-      date: '',
-      time: '',
-      location: ''
-    }
-  },
-  methods: {
-    updateTitle: function (val) {
-      this.title = val
-    },
-    updateSubject: function (val) {
-      this.subject = val
-    },
-    updateDate: function (val) {
-      this.date = val
-    },
-    updateTime: function (val) {
-      this.time = val
-    },
-    updateLocation: function (val) {
-      this.location = val
-    }
-  },
-  computed: {
-    getDateFormated: function () {
-      if (this.date.length > 0) {
-        let d = this.date.split('-')[2]
-        let m = this.date.split('-')[1]
-        let y = this.date.split('-')[0]
-        return d+'.'+m+'.'+y
-      }
-      return ''
-    }
-  }
 }
 </script>
 
@@ -69,22 +22,42 @@ export default {
   width: 100vw;
   height: 100vh;
   display: flex;
+  align-items: center;
+  flex-direction: column;
   justify-content: center;
 
-  #content {
-    width: 800px;
-    background-color: #efefef;
-
-    #form {
-      padding: 48px;
-      height: calc(100vh - 88px);
-    }
+  b {
+    margin-left: 4px;
+    letter-spacing: 0;
   }
-  #preview {
-    width: 100%;
+
+  .welcome-text {
+    font-size: 24px;
+    letter-spacing: 2px;
+  }
+
+  ul {
     display: flex;
+    font-size: 20px;
+    margin-top: 32px;
     align-items: center;
-    justify-content: center;
+    flex-direction: row;
+
+    li {
+      a {
+        color: #ccc;
+        margin: 4px 8px;
+        padding: 2px 4px;
+        display: block;
+        cursor: pointer;
+        text-decoration: underline;
+        transition: color 200ms ease;
+
+        &:hover {
+          color: #303030;
+        }
+      }
+    }
   }
 }
 </style>
