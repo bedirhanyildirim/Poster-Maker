@@ -87,7 +87,7 @@ export default {
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .18);
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, .18);
 
   .elements {
     z-index: 2;
@@ -101,12 +101,10 @@ export default {
 
     #title {
       font-size: 2.8em;
-      line-height: 1.2em;
       font-weight: bold;
       margin-bottom: 2rem;
     }
     #subject {
-      font-weight: bold;
       margin-bottom: 2rem;
     }
     #date {
