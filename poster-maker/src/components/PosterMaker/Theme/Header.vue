@@ -1,7 +1,7 @@
 <template>
 <div id="header">
   <div class="logo">
-    <router-link to="/">
+    <router-link to="/poster-maker">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="220 200 350 350">
         <defs>
           <linearGradient id="linear-gradient" x1="0.914" y1="0.834" x2="0.419" y2="0.387" gradientUnits="objectBoundingBox">

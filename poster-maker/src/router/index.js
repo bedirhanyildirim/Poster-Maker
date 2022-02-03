@@ -21,6 +21,14 @@ const routes = [
     }
   },
   {
+    path: '/poster-maker/app',
+    name: 'PosterMakerApp',
+    component: () => import('@/components/PosterMaker/App'),
+    meta: {
+      title: 'Create Poster Now!'
+    }
+  },
+  {
     path: '/image-cropper',
     name: 'ImageCropper',
     component: () => import('@/pages/ImageCropper'),
