@@ -21,6 +21,14 @@ const routes = [
     }
   },
   {
+    path: '/image-cropper',
+    name: 'ImageCropper',
+    component: () => import('@/pages/ImageCropper'),
+    meta: {
+      title: 'Image Cropper'
+    }
+  },
+  {
     path: '*',
     name: '404',
     component: () => import('@/pages/404'),
