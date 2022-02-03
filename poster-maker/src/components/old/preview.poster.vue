@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import c2h from '../assets/scripts/html2canvas'
+import c2h from '../../assets/scripts/html2canvas'
 export default {
   name: 'preview.poster',
   props: {
