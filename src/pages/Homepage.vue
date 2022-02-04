@@ -8,7 +8,7 @@
           <span class="typing">bedirhan.design</span>
         </div>
         <div class="apps">
-          <div class="title">Apps in your usage</div>
+          <div class="title">Apps in your service</div>
           <ul class="app-list">
             <li class="app-list-item">
               <div class="card">
