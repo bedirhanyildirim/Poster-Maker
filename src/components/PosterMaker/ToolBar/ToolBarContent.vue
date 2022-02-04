@@ -41,9 +41,6 @@
     <ToolBarContentItem>
       <BlobInput/>
     </ToolBarContentItem>
-    <ToolBarContentItem>
-      <Dropdown/>
-    </ToolBarContentItem>
   </div>
 </div>
 </template>
@@ -60,7 +57,6 @@ import AlignInput from "@/components/PosterMaker/Inputs/AlignInput";
 import FontInput from "@/components/PosterMaker/Inputs/FontInput";
 import ColorInput from "@/components/PosterMaker/Inputs/ColorInput";
 import BlobInput from "@/components/PosterMaker/Inputs/BlobInput";
-import Dropdown from "@/components/PosterMaker/AutoFillDropdown/Dropdown";
 import {mapState, mapActions, mapMutations} from "vuex";
 
 export default {
@@ -75,8 +71,7 @@ export default {
     AlignInput,
     FontInput,
     ColorInput,
-    BlobInput,
-    Dropdown
+    BlobInput
   },
   data() {
     return {
