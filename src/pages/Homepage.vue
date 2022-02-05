@@ -52,6 +52,7 @@
 
 <script>
 import MacOSWindow from "../components/shared/MacOSWindow";
+
 export default {
   components: { MacOSWindow }
 }
@@ -134,9 +135,10 @@ export default {
         }
 
         .app-list {
+          gap: 20px;
           display: flex;
           align-items: flex-start;
-          justify-content: space-between;
+          justify-content: flex-start;
 
           .app-list-item {
 
@@ -247,6 +249,63 @@ export default {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+@media only screen and (max-width: 720px) {
+  #home {
+    padding: 20px;
+
+    .window {
+      width: 100%;
+
+      .content {
+        .apps {
+          .app-list {
+            flex-direction: column;
+
+            .app-list-item {
+              width: 100%;
+
+              .card {
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 500px) {
+  #home {
+    .window {
+      .content {
+        .welcome-text {
+          .static {
+            font-size: 18px;
+          }
+          .typing {
+            font-size: 24px;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 410px) {
+  #home {
+    .window {
+      .content {
+        .welcome-text {
+          .static {
+            font-size: 16px;
+          }
+          .typing {
+            font-size: 20px;
+          }
+        }
+      }
+    }
   }
 }
 </style>

@@ -21,7 +21,7 @@ export default {
 #maxOSWindow {
   width: 100%;
   display: block;
-  min-width: 360px;
+  min-width: 280px;
   overflow: hidden;
   border-radius: 7px;
   backdrop-filter: blur(10px);
