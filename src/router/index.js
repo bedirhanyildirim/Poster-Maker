@@ -77,6 +77,44 @@ const routes = [
     }
   },
   {
+    path: '/webcam',
+    name: 'Webcam',
+    component: () => import('@/pages/Webcam'),
+    meta: {
+      title: 'Webcam',
+      //TODO: edit description
+      metaTags: [
+        {
+          name: 'description',
+          content: 'Simple image cropper on your browser. Crop your image right now.'
+        },
+        {
+          property: 'og:description',
+          content: 'Simple image cropper on your browser. Crop your image right now.'
+        }
+      ]
+    }
+  },
+  {
+    path: '/webcam/app',
+    name: 'Webcam App',
+    component: () => import('@/components/Webcam/App'),
+    meta: {
+      title: 'Webcam App',
+      //TODO: edit description
+      metaTags: [
+        {
+          name: 'description',
+          content: 'Simple image cropper on your browser. Crop your image right now.'
+        },
+        {
+          property: 'og:description',
+          content: 'Simple image cropper on your browser. Crop your image right now.'
+        }
+      ]
+    }
+  },
+  {
     path: '*',
     name: '404',
     component: () => import('@/pages/404'),
