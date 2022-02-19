@@ -109,6 +109,8 @@ router.beforeResolve((to, from, next) => {
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title
 
+  //TODO: add vue-meta library to make it clear
+  // start of refactor
   Array.from(document.querySelectorAll('[data-vue-router-controlled]')).map(el => el.parentNode.removeChild(el));
 
   to.meta.metaTags.map(tagDef => {
@@ -122,6 +124,7 @@ router.beforeEach((to, from, next) => {
 
     return tag;
   }).forEach(tag => document.head.appendChild(tag));
+  // end of refactor
 
   next()
 })
