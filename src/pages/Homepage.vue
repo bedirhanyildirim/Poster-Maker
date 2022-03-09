@@ -14,7 +14,7 @@
               <div class="card">
                 <div class="card-header">
                   <div class="icon">
-                    <img src="../assets/poster-maker-blue-gradient.png" alt="Poster Maker">
+                    <img src="../assets/poster-maker-grey.png" alt="Poster Maker">
                   </div>
                   <div class="title">Poster Maker</div>
                 </div>
@@ -30,7 +30,7 @@
               <div class="card">
                 <div class="card-header">
                   <div class="icon">
-                    <img src="../assets/poster-maker-grey.png" alt="Poster Maker">
+                    IC
                   </div>
                   <div class="title">Image Cropper</div>
                 </div>
@@ -39,6 +39,22 @@
                 </div>
                 <div class="card-footer">
                   <RouterLink to="/image-cropper" class="disabled">Soon</RouterLink>
+                </div>
+              </div>
+            </li>
+            <li class="app-list-item">
+              <div class="card">
+                <div class="card-header">
+                  <div class="icon">
+                    W
+                  </div>
+                  <div class="title">Webcam</div>
+                </div>
+                <div class="card-mid">
+                  Add description text here
+                </div>
+                <div class="card-footer">
+                  <RouterLink to="/webcam">Open</RouterLink>
                 </div>
               </div>
             </li>
@@ -134,7 +150,9 @@ export default {
         }
 
         .app-list {
+          gap: 20px;
           display: flex;
+          flex-wrap: wrap;
           align-items: flex-start;
           justify-content: space-between;
 
@@ -158,13 +176,23 @@ export default {
                 align-items: center;
 
                 .icon {
+                  width: 40px;
+                  height: 40px;
+                  display: flex;
+                  font-size: 20px;
+                  overflow: hidden;
                   margin-right: 10px;
+                  align-items: center;
+                  font-weight: lighter;
+                  justify-content: center;
+
                   img {
                     width: 40px;
                     height: 40px;
                   }
                 }
                 .title {
+                  margin: 0;
                   color: #ffffff;
                   font-size: 18px;
                   font-weight: 400;
