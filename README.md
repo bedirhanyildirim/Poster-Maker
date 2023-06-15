@@ -1,9 +1,8 @@
 # Poster Maker
 
 The Poster Maker project idea developed by 
-[@furkansarihan](https://github.com/furkansarihan) and 
 [@bedirhanyildirim](https://github.com/bedirhanyildirim) 
-at the beginning of 2021.
+at the beginning of 2021. It is 2023 and here we are with v3.
 
 The main idea has always been creating simple, basic, well aligned, beautiful, 
 eye-catching posters. 
@@ -15,4 +14,4 @@ User will never have to design again. The main goal is the end bad designed post
 - [Meryem Altundal](https://www.linkedin.com/in/meryem-altundal-728319160/) _poster layouts design_
 
 ## Live demo
-Poster Maker [live demo](https://bedirhan.design/poster-maker/app) is available now!
+Poster Maker is not live currently!
